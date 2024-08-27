@@ -3,27 +3,39 @@ import HomeView from "../views/HomeView.vue";
 import SearchByIngredients from "../views/SearchByIngredients.vue";
 import SearchByName from "../views/SearchByName.vue";
 import SearchByLetter from "../views/SearchByLetter.vue";
+import DefaultLayout from "../components/DefaultLayout.vue";
+import GuestLayout from "../components/GuestLayout.vue";
 
 const routes = [
     {
-        path: '/',
-        name: 'home',
-        component: HomeView
+      path: '/',
+      component: DefaultLayout,
+      children: [
+          {
+              path: '/',
+              name: 'home',
+              component: HomeView
+          },
+          {
+              path: '/by-letter/:letter?',
+              name: 'byLetter',
+              component: SearchByLetter
+          },
+          {
+              path: '/by-name/:name?',
+              name: 'byName',
+              component: SearchByName
+          },
+          {
+              path: '/by-ingredient/:ingredient?',
+              name: 'byIngredient',
+              component: SearchByIngredients
+          }
+      ]
     },
     {
-        path: '/by-letter/:letter?',
-        name: 'byLetter',
-        component: SearchByLetter
-    },
-    {
-        path: '/by-name/:name?',
-        name: 'byName',
-        component: SearchByName
-    },
-    {
-        path: '/by-ingredient/:ingredient?',
-        name: 'byIngredient',
-        component: SearchByIngredients
+        path: '/guest',
+        component: GuestLayout,
     }
 ]
 
