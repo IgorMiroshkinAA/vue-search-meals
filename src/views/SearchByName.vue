@@ -14,20 +14,14 @@
         :key="meal.idMeal"
         class="bg-white shadow rounded-xl"
     >
-      <router-link to="/">
+      <router-link :to="{name: 'mealDetails', params: {id: meal.idMeal}}">
         <img :src="meal.strMealThumb" :alt="meal.strMeal" class="rounded-t-xl w-full h-48 object-cover">
       </router-link>
       <div class="p-3">
         <h3 class="font-bold">{{ meal.strMeal }}</h3>
         <p class="mb-4">Lorem tes tes tes tset set set set set set se tsetsetsetset</p>
         <div class="flex items-center justify-between">
-          <a
-              :href="meal.strYoutube"
-              target="_blank"
-              class="px-3 py-2 rounded border-2 text-white border-red-600 bg-red-500 hover:bg-red-600"
-          >
-            YouTube
-          </a>
+          <YouTubeButton :href="meal.strYoutube">YouTube</YouTubeButton>
         </div>
       </div>
     </div>
@@ -36,9 +30,10 @@
 
 <script setup>
 
-import {computed, onMounted, ref} from "vue";
+import { computed, onMounted, ref } from "vue";
+import { useRoute } from "vue-router";
 import store from "../store/index.js";
-import {useRoute} from "vue-router";
+import YouTubeButton from "../components/YouTubeButton.vue";
 
 const route = useRoute();
 const keyword = ref('');
