@@ -7,7 +7,7 @@
     </router-link>
     <div class="p-3">
       <h3 class="font-bold">{{ meal.strMeal }}</h3>
-      <p class="mb-4">Lorem tes tes tes tset set set set set set se tsetsetsetset</p>
+      <p class="mb-4">Lorem ipsum odor amet, consectetuer adipiscing elit.</p>
       <div class="flex items-center justify-between">
         <YouTubeButton :href="meal.strYoutube">YouTube</YouTubeButton>
       </div>
